@@ -3,9 +3,7 @@
 ![Python](https://img.shields.io/badge/Python-3.10-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-This repository contains a complete workflow for the computational discovery of mixed halide perovskites. It integrates **Exploratory Data Analysis (EDA)**, **Clustering**, and **CatBoost Machine Learning** models to predict material properties, supported by rigorous inferential statistics (ANOVA and Tukey HSD).
-
-The project utilizes a structured dataset of material features (A-site, B-site, X-site, DFE energies, and bandgap values) to identify stability trends and optimize bandgaps.
+This repository hosts a robust computational framework for the accelerated discovery of mixed halide perovskites (ABX3​) tailored for photovoltaic applications. Leveraging a synergistic approach of gradient-boosted machine learning (CatBoost), unsupervised clustering (t-SNE/BGMM), and rigorous inferential statistics, the workflow navigates the complex compositional space to identify candidates with optimal bandgaps and enhanced thermodynamic stability against defect formation.
 
 ---
 

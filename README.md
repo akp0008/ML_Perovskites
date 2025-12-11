@@ -1,4 +1,4 @@
-# Material Property Modeling: EDA, Clustering & CatBoost Prediction
+# ML Driven Design of Halide Perovskites: EDA, Clustering & Predictive Modeling
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)

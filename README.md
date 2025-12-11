@@ -49,8 +49,9 @@ The project is organized into modular directories for data, analysis, and result
 ### 1. Exploratory Data Analysis
 Located in: `notebooks/EDA/`
 * **Distribution Analysis:** Visualizing the spread of defect energies and bandgaps.
-* **Correlation:** Pearson/Spearman heatmaps to identify collinearity between features.
-* **Clustering:** Unsupervised learning (K-Means/Hierarchical) to group compounds based on physiochemical descriptors.
+* **Correlation Analysis:** Pearson and Spearman rank correlation heatmaps to diagnose multicollinearity and identify key structure-property relationships.
+*  **Inferential Statistics:** One-way ANOVA and Tukey’s HSD post-hoc analysis to rigorously quantify the statistical significance of site-specific substitutions on thermodynamic stability.
+* **Dimensionality Reduction and Clustering:** Unsupervised learning utilizing t-SNE for projection and Bayesian Gaussian Mixture Models (BGMM) to group compounds based on physiochemical descriptors.
 
 ### 2. Machine Learning Models
 Located in: `notebooks/Models/`
@@ -69,7 +70,7 @@ Located in: `notebooks/Statistics/`
 ## 📊 Dataset
 
 The project relies on:
-* **`data/dataset.csv`**: A structured table containing stoichiometry, physiochemical features (radii, electronegativity), and target variables derived from DFT/CHGNet calculations.
+* **`data/dataset.csv`**: A structured table containing stoichiometry, physiochemical features (ionic radii, tolerance factor, etc.), and target variables derived from DFT/CHGNet calculations.
 
 ---
 

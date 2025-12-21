@@ -1,11 +1,11 @@
-# Material Property Modeling: EDA, Clustering & CatBoost Prediction
+# Data-driven Design of Mixed Halide Perovskites
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-This repository contains a complete workflow for the computational discovery of mixed halide perovskites. It integrates **Exploratory Data Analysis (EDA)**, **Clustering**, and **CatBoost Machine Learning** models to predict material properties, supported by rigorous inferential statistics (ANOVA and Tukey HSD).
+Complete computational workflow analyzing **1,044 halide perovskites** with **CHGNet-computed defect formation energies** (DFE). Integrates **EDA**, **unsupervised clustering**, **CatBoost prediction**, and **inferential statistics** (ANOVA + Tukey HSD).
 
-The project utilizes a structured dataset of material features (A-site, B-site, X-site, DFE energies, and bandgap values) to identify stability trends and optimize bandgaps.
+**Goal:** Identify stability-bandgap trade-offs for tandem solar cell design (1.5 eV target).
 
 ---
 
@@ -71,7 +71,6 @@ Located in: `notebooks/Statistics/`
 The project relies on:
 * **`data/dataset.csv`**: A structured table containing stoichiometry, physiochemical features (radii, electronegativity), and target variables derived from DFT/CHGNet calculations.
 
----
 
 ## 📦 Installation
 

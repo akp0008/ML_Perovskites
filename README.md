@@ -21,7 +21,7 @@ The project is organized into modular directories for data, analysis, and result
 ├── notebooks/
 │   ├── EDA/
 │   │   ├── correlations.ipynb       # Feature correlation heatmaps & analysis
-│   │   └── clustering.ipynb         # UMAP/KMeans clustering of compositions
+│   │   └── clustering.ipynb         # t-SNE dimensionality reduction and Bayesian Gaussian Mixture Model clustering of compositions
 │   │
 │   ├── Models/                      # CatBoost Regressors for each target
 │   │   ├── A-DFE.ipynb

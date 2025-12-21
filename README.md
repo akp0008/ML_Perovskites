@@ -49,8 +49,8 @@ The project is organized into modular directories for data, analysis, and result
 ### 1. Exploratory Data Analysis
 Located in: `notebooks/EDA/`
 * **Distribution Analysis:** Visualizing the spread of defect energies and bandgaps.
-* **Correlation:** Pearson/Spearman heatmaps to identify collinearity between features.
-* **Clustering:** Unsupervised learning (K-Means/Hierarchical) to group compounds based on physiochemical descriptors.
+* **Correlation:** Spearman/MI/dCor/MIC heatmaps to identify relation between features.
+* **Diensionality Reduction and Clustering:** Unsupervised learning (t-SNE Dimensionality Reduction + Bayesian Gaussian Mixture Model clustering) to group compounds based on physiochemical descriptors.
 
 ### 2. Machine Learning Models
 Located in: `notebooks/Models/`

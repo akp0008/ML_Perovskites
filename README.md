@@ -7,7 +7,7 @@ End-to-end Materials Informatics framework for the high-throughput analysis of *
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 The project is organized into modular directories for data, analysis, and results:
 

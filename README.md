@@ -3,9 +3,7 @@
 ![Python](https://img.shields.io/badge/Python-3.10-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-Complete computational workflow analyzing **1,044 halide perovskites** with **CHGNet-computed defect formation energies** (DFE). Integrates **EDA**, **unsupervised clustering**, **CatBoost prediction**, and **inferential statistics** (ANOVA + Tukey HSD).
-
-**Goal:** Identify stability-bandgap trade-offs for tandem solar cell design (1.5 eV target).
+End-to-end Materials Informatics framework for the high-throughput analysis of **1,044 halide perovskites** utilizing **CHGNet-derived defect formation energies (DFEs)**. Integrates **unsupervised clustering (BGMM)**, **explainable machine learning (CatBoost + SHAP)**, and **inferential statistics (ANOVA + Tukey HSD)** to navigate complex stability-bandgap trade-offs. The modular architecture is designed to accelerate tandem solar cell discovery (1.5 eV target) via agentic hyperparameter optimization.
 
 ---
 
@@ -31,6 +29,9 @@ The project is organized into modular directories for data, analysis, and result
 │   │
 │   └── Statistics/
 │       └── inferential.ipynb        # One-way ANOVA & Tukey HSD tests
+├── src/                             # Production-grade modular source code
+│   ├── __init__.py                  # Package initializer
+│   └── perovskite_predictor.py      # Unified ML pipeline (CatBoost + Optuna + SHAP)
 │
 ├── results/
 │   └── tukey/                       # Statistical post-hoc analysis tables
@@ -42,15 +43,37 @@ The project is organized into modular directories for data, analysis, and result
 └── README.md                        # Project documentation
 ```
 
+## Modular ML Pipeline
+
+**Location:** `src/`
+
+The core predictive logic is implemented as a **Modular Machine Learning Pipeline** designed for high-throughput materials discovery and autonomous property optimization. The architecture emphasizes scalability, interpretability, and automated diagnostics.
+
+### Core Features
+
+- **Agentic Tuning**
+  - Integrated **Optuna** engine for automated hyperparameter optimization.
+  - Enables efficient exploration of model configurations with minimal manual intervention.
+
+- **Explainability (XAI)**
+  - Built-in **SHAP** and **feature importance** modules.
+  - Supports extraction and analysis of physically meaningful descriptors.
+
+- **Diagnostics & Monitoring**
+  - Automated generation of **learning curves** to assess bias–variance trade-offs.
+  - **Parity plots** for evaluating predictive accuracy and systematic errors.
+
+This modular design allows seamless extension to new models, descriptors, and optimization strategies while maintaining reproducibility and transparency.
+
 ---
 
-## 🧪 Notebooks Overview
+## Notebooks Overview
 
 ### 1. Exploratory Data Analysis
 Located in: `notebooks/EDA/`
 * **Distribution Analysis:** Visualizing the spread of defect energies and bandgaps.
 * **Correlation:** Spearman/MI/dCor/MIC heatmaps to identify relation between features.
-* **Diensionality Reduction and Clustering:** Unsupervised learning (t-SNE Dimensionality Reduction + Bayesian Gaussian Mixture Model clustering) to group compounds based on physiochemical descriptors.
+* **Dimensionality Reduction and Clustering:** Unsupervised learning (t-SNE Dimensionality Reduction + Bayesian Gaussian Mixture Model clustering) to group compounds based on physiochemical descriptors.
 
 ### 2. Machine Learning Models
 Located in: `notebooks/Models/`
@@ -66,13 +89,13 @@ Located in: `notebooks/Statistics/`
 
 ---
 
-## 📊 Dataset
+## Dataset
 
 The project relies on:
-* **`data/dataset.csv`**: A structured table containing stoichiometry, physiochemical features (radii, electronegativity), and target variables derived from DFT/CHGNet calculations.
+* **`data/dataset.csv`**: A structured table containing stoichiometry, physiochemical features (radii, density, tolerance factor, etc.), and target variables derived from DFT/CHGNet calculations.
 
 
-## 📦 Installation
+## Installation
 
 To reproduce the environment, it is recommended to use a clean virtual environment (conda or venv).
 
@@ -95,7 +118,7 @@ pip install -r requirements.txt
 
 ---
 
-## ▶️ Usage
+## Usage
 
 1. **Launch Jupyter Lab:**
    ```bash
@@ -106,10 +129,31 @@ pip install -r requirements.txt
 
 ---
 
-## 📜 License
+## Citation
+
+If you use this code or dataset in your research, please cite the following paper:
+
+**Pandey, A. K., Pandey, V., and Tewari, A. (2025).**  
+*Machine learning aided bandgap and defect engineering of mixed halide perovskites for photovoltaic applications.*  
+**Materials Today Physics**, Article 102003.  
+https://doi.org/10.1016/j.mtphys.2025.102003
+
+### BibTeX
+
+@article{pandey2025machine,
+  title={Machine learning aided bandgap and defect engineering of mixed halide perovskites for photovoltaic applications},
+  author={Pandey, Ayush Kumar and Pandey, Vivek and Tewari, Abhishek},
+  journal={Materials Today Physics},
+  pages={102003},
+  year={2025},
+  publisher={Elsevier},
+  doi={10.1016/j.mtphys.2025.102003}
+}
+
+## License
 
 MIT License.
 
-## 🤝 Contributing
+## Contributing
 
 Pull requests and suggestions are welcome.

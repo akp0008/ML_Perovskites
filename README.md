@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/badge/Python-3.10-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-End-to-end Materials Informatics framework for the high-throughput analysis of **1,044 halide perovskites** utilizing **CHGNet-derived defect formation energies (DFEs)**. Integrates **unsupervised clustering (BGMM)**, **explainable machine learning (CatBoost + SHAP)**, and **inferential statistics (ANOVA + Tukey HSD)** to navigate complex stability-bandgap trade-offs. The modular architecture is designed to accelerate tandem solar cell discovery (1.5 eV target) via agentic hyperparameter optimization.
+End-to-end Materials Informatics framework for the high-throughput analysis of **1,044 halide perovskites** utilizing **CHGNet-derived defect formation energies (DFEs)**. Integrates **unsupervised clustering (BGMM)**, **explainable machine learning (CatBoost + SHAP)**, and **inferential statistics (ANOVA + Tukey HSD)** to navigate complex stability-bandgap trade-offs. The modular architecture serves as the high-throughput surrogate engine for an autonomous Multi-Objective Genetic Algorithm (MOGA) workflow, enabling the exploration of $\sim 10^{12}$ mixed compositions via the DAKOTA toolkit.
 
 ---
 
@@ -51,7 +51,7 @@ The core predictive logic is implemented as a **Modular Machine Learning Pipelin
 
 ### Core Features
 
-- **Agentic Tuning**
+- **Automated Tuning**
   - Integrated **Optuna** engine for automated hyperparameter optimization.
   - Enables efficient exploration of model configurations with minimal manual intervention.
 
@@ -67,6 +67,31 @@ This modular design allows seamless extension to new models, descriptors, and op
 
 ---
 
+## Inverse Design Workflow (MOGA Integration)
+
+```text
++---------------------+           (1) Generates          +----------------------+
+|    DAKOTA / MOGA    | -------------------------------> |  Composition Vector  |
+|  Optimization Engine|                                  |  (Design Variables)  |
++---------------------+                                  +----------+-----------+
+          ^                                                         |
+          |                                                         | (2) Input
+          | (4) Feedback / Fitness                                  v
+          |                                              +----------------------+
++---------+-----------+                                  |   CatBoost Models    |
+| Objective Functions | <---------(3) Predicts---------  |  (Surrogate Engine)  |
+| (Stability, Bandgap)|                                  +----------------------+
++---------------------+
+```
+
+This repository hosts the **predictive backend** for the inverse design campaign described in *Pandey et al. (2025)*.
+
+To navigate the combinatorial space of $\sim 10^{12}$ mixed-halide compositions, this project integrates with the **DAKOTA** optimization toolkit:
+*  **Surrogate Modeling:** The `CatBoost` models in `src/` act as rapid evaluators for thermodynamic stability and bandgap.
+*  **Autonomous Optimization:** These surrogates are coupled with a Multi-Objective Genetic Algorithm (MOGA) to drive an evolutionary search towards the Pareto front.
+
+---
+
 ## Notebooks Overview
 
 ### 1. Exploratory Data Analysis
@@ -75,19 +100,18 @@ Located in: `notebooks/EDA/`
 * **Correlation:** Spearman/MI/dCor/MIC heatmaps to identify relation between features.
 * **Dimensionality Reduction and Clustering:** Unsupervised learning (t-SNE Dimensionality Reduction + Bayesian Gaussian Mixture Model clustering) to group compounds based on physiochemical descriptors.
 
-### 2. Machine Learning Models
+### 2. Statistical Analysis
+Located in: `notebooks/Statistics/`
+* **Inferential Statistics:** One-way ANOVA to test the significance of site-specific substitutions.
+* **Tukey HSD:** Pairwise comparisons exported to `results/tukey/` to identify distinct stability clusters (e.g., comparing MA-based vs. FA-based stability).
+
+### 3. Machine Learning Models
 Located in: `notebooks/Models/`
 Each notebook trains a gradient-boosted decision tree (CatBoost) for a specific target property:
 * **Inputs:** Compositional vectors and elemental properties.
 * **Targets:** Bandgap ($E_g$) and Defect Formation Energies ($E_A, E_B, E_X$).
 * **Workflow:** Preprocessing -> Hyperparameter Tuning (Optuna) -> Validation -> SHAP Analysis.
 
-### 3. Statistical Analysis
-Located in: `notebooks/Statistics/`
-* **Inferential Statistics:** One-way ANOVA to test the significance of site-specific substitutions.
-* **Tukey HSD:** Pairwise comparisons exported to `results/tukey/` to identify distinct stability clusters (e.g., comparing MA-based vs. FA-based stability).
-
----
 
 ## Dataset
 
@@ -132,14 +156,15 @@ pip install -r requirements.txt
 ## Citation
 
 If you use this code or dataset in your research, please cite the following paper:
-
+```text
 **Pandey, A. K., Pandey, V., and Tewari, A. (2025).**  
 *Machine learning aided bandgap and defect engineering of mixed halide perovskites for photovoltaic applications.*  
 **Materials Today Physics**, Article 102003.  
 https://doi.org/10.1016/j.mtphys.2025.102003
-
+```
 ### BibTeX
 
+```text
 @article{pandey2025machine,
   title={Machine learning aided bandgap and defect engineering of mixed halide perovskites for photovoltaic applications},
   author={Pandey, Ayush Kumar and Pandey, Vivek and Tewari, Abhishek},
@@ -149,7 +174,7 @@ https://doi.org/10.1016/j.mtphys.2025.102003
   publisher={Elsevier},
   doi={10.1016/j.mtphys.2025.102003}
 }
-
+```
 ## License
 
 MIT License.

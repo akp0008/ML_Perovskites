@@ -157,9 +157,9 @@ pip install -r requirements.txt
 
 If you use this code or dataset in your research, please cite the following paper:
 ```text
-**Pandey, A. K., Pandey, V., and Tewari, A. (2025).**  
-*Machine learning aided bandgap and defect engineering of mixed halide perovskites for photovoltaic applications.*  
-**Materials Today Physics**, Article 102003.  
+Pandey, A. K., Pandey, V., and Tewari, A. (2025).  
+Machine learning aided bandgap and defect engineering of mixed halide perovskites for photovoltaic applications. 
+Materials Today Physics, Article 102003.  
 https://doi.org/10.1016/j.mtphys.2025.102003
 ```
 ### BibTeX
